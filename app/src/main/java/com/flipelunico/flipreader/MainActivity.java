@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
+        //getSupportActionBar().setElevation(0);
+
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         mRecyclerView.setHasFixedSize(true);
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        Cursor c = FeedlyDB.getInstance(this).getENTRIES("Android");
+        Cursor c = FeedlyDB.getInstance(this).getENTRIES("Gaming");
 
         if (c.getCount() > 0) {
 
@@ -80,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        FeedlyParser.getInstance(this).get_entries("user/45572cdc-c7de-425f-bc9a-11e08b224fab/category/Android");
+        FeedlyParser.getInstance(this).get_entries("user/45572cdc-c7de-425f-bc9a-11e08b224fab/category/Gaming");
 
         return true;
 
@@ -88,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void CargarVista()
     {
-        Cursor c = FeedlyDB.getInstance(this).getENTRIES("Android");
+        Cursor c = FeedlyDB.getInstance(this).getENTRIES("Gaming");
 
         mAdapter = new FeedListAdapter(c,this);
         mRecyclerView.setAdapter(mAdapter);

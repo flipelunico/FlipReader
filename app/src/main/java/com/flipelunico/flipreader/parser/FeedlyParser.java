@@ -42,7 +42,7 @@ public class FeedlyParser {
     private String CATEGORIES_URL = "http://cloud.feedly.com/v3/categories";
     private String SUBSCRIPTIONS_URL = "http://cloud.feedly.com/v3/subscriptions";
     private String ENTRIES_URL = "http://cloud.feedly.com/v3/streams/contents?streamId=user/45572cdc-c7de-425f-bc9a-11e08b224fab/category/Android&count=100";
-    private String Token = "OAuth AynLrrp9qAi8avGGImVTdpKQuJbCwT-_6pUvJT8vwhUl-2zTm4TyjJs4WcSW-2Ch_0hHz-QVw_7N7tTfPw96Io-svrDDvqwh39cb-MxzM2bhC6Vi2wuVLb0WHC0uOGKZFg-kYSH5Md20vdVVhxjGpsIqrusoxi-gmtXparh3wkxsygnqQs1pnOFr-oX18wkYo7GxqAgcokhQzJjRz6DDmY1ln6U6HQ:feedlydev";
+    private String Token = "OAuth A17JPrzY4MRFuKs2VQEpGDJF2C4Zh1FXHV_zKXBl8hFc58E5JAHdsuYbN4r2JNKMRFo0E4a9E-cuCwiu23xp9KLLU6neOLs7XgPYz0i5GkSiU8voPu1EYnid8xOj6iuhK2GtS7M7XkeNaw0O3S1mNJ7kCNW1XwIKsGaDROUr4ULibLQfo-TlZE1jvoIjP1KZ3FeBjlQzcl0PmE7XDAwRMAS5JUwGTw:feedlydev";
     private Context mContext;
     private String mContinuation;
     /*
@@ -332,6 +332,15 @@ public class FeedlyParser {
                     categoryId = getValue2(categories,"id");
                     //Log.i("Flipelunico","categoryId: " + categoryId);
 
+                    JSONObject visual = null;
+                    try {
+                        visual = item.getJSONObject("visual");
+                    } catch (JSONException e){
+                        Log.i("Flipelunico","error obtener objeto visual");
+                    }
+
+                    visual_url = getValue(visual,"url");
+                    Log.i("flipelunico","visual url : " + visual_url);
                     //TODO: faltan gets...flojera
 
                     Entry e = new Entry();
